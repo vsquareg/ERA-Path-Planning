@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="omni_drive" default="true"/>
+	<arg if="$(arg omni_drive)" name="ros_planar_move_plugin" value="true"/>
+	<arg unless="$(arg omni_drive)" name="ros_planar_move_plugin" default="true"/>
+	<arg name="launch_rviz" default="true"/>
+	<arg name="gazebo_world" default="$(find roborts_gazebo)/worlds/ai2020.world"/>
+	<arg name="launch_advanced_simulation" default="false"/>
+	
+	<arg name="launch_robot_a" default="true"/>
+	<arg name="map_file_a" default="ai2020.yaml"/>
+	<arg name="localization_robot_a" default="false"/>
+	<arg name="gmapping_robot_a" default="false"/>
+	<arg name="move_base_robot_a" default="true"/>
+	<arg name="amcl_and_mapserver_a" default="true"/>
+	<arg name="xacro_robot_a" default="roborts_std.urdf.xacro"/>
+	<arg name="launch_pad_a" default="false"/>
+
+	<arg name="launch_robot_b" default="false"/>
+	<arg name="map_file_b" default="ai2020.yaml"/>
+	<arg name="localization_robot_b" default="false"/>
+	<arg name="gmapping_robot_b" default="false"/>
+	<arg name="move_base_robot_b" default="true"/>
+	<arg name="amcl_and_mapserver_b" default="true"/>
+	<arg name="xacro_robot_b" default="roborts_std.urdf.xacro"/>
+	<arg name="launch_pad_b" default="false"/>
+
+	<include file="$(find roborts_gazebo)/launch/roborts_gazebo.launch">
+		
+		<arg name="launch_rviz" value="$(arg launch_rviz)"/>
+		<arg name="gazebo_world" value="$(arg gazebo_world)"/>
+		<arg name="omni_drive" value="$(arg omni_drive)"/>
+		<arg name="ros_planar_move_plugin" value="$(arg ros_planar_move_plugin)"/>
+		<arg name="launch_advanced_simulation" value="$(arg launch_advanced_simulation)"/>
+
+		<arg name="launch_robot_a" value="$(arg launch_robot_a)"/>
+		<arg name="map_file_a" value="$(arg map_file_a)"/>
+		<arg name="localization_robot_a" value="$(arg localization_robot_a)"/>
+		<arg name="gmapping_robot_a" value="$(arg gmapping_robot_a)"/>
+		<arg name="move_base_robot_a" value="$(arg move_base_robot_a)"/>
+		<arg name="amcl_and_mapserver_a" value="$(arg amcl_and_mapserver_a)"/>
+		<arg name="xacro_robot_a" value="$(arg xacro_robot_a)"/>
+		<arg name="launch_pad_a" value="$(arg launch_pad_a)"/>
+
+		<arg name="launch_robot_b" value="$(arg launch_robot_b)"/>
+		<arg name="localization_robot_b" value="$(arg localization_robot_b)"/>
+		<arg name="gmapping_robot_b" value="$(arg gmapping_robot_b)"/>
+		<arg name="move_base_robot_b" value="$(arg move_base_robot_b)"/>
+		<arg name="amcl_and_mapserver_b" value="$(arg amcl_and_mapserver_b)"/>
+		<arg name="map_file_b" value="$(arg map_file_b)"/>
+		<arg name="xacro_robot_b" value="$(arg xacro_robot_b)"/>
+		<arg name="launch_pad_b" value="$(arg launch_pad_b)"/>
+	</include>
+
+
+</launch>
